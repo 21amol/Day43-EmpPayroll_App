@@ -22,9 +22,12 @@
 		      <div class="form-head">Employee Payroll Form</div>
 		        <div class="row-content">
 			        <label class="label text" for="name">Name</label>
-			          <input class="input" type="text" id="name" name="name" 
+			          <input class="input" type="text" id="text" name="text" 
 								placeholder="Your Name..." required>
+								<error-output class="text-error" for="text"></error-output>
 		        </div>
+
+
 		  
 			<div class="row-content">
         <label class="label text" for="profile">Profile Image</label>
@@ -84,6 +87,7 @@
       </div>
 
 <script>
+
 			const salary = document.querySelector('#salary');
 			const output = document.querySelector('.salary-output');
 			output.textContent = salary.value;
@@ -129,18 +133,18 @@
 			<option value="31">31</option>
 		</select>
 		<select id="month" name="Month">
-				<option value="jan">january</option>
-				<option value="feb">febuary</option>
-				<option value="mar">march</option>
-				<option value="april">april</option>
-				<option value="may">may</option>
-				<option value="june">june</option>
-				<option value="july">july</option>
-				<option value="august">august</option>
-				<option value="september">september</option>
-				<option value="octomber">octomber</option>
-				<option value="november">november</option>
-				<option value="december">december</option>
+				<option value="jan">January</option>
+				<option value="feb">Febuary</option>
+				<option value="mar">March</option>
+				<option value="april">April</option>
+				<option value="may">May</option>
+				<option value="june">June</option>
+				<option value="july">July</option>
+				<option value="august">August</option>
+				<option value="september">September</option>
+				<option value="octomber">Octomber</option>
+				<option value="november">November</option>
+				<option value="december">December</option>
 				
 		</select>
 		<select id="year" name="year">
@@ -161,6 +165,19 @@
 
 	</div>
 </div>
+
+<div class="row-content">
+	<label class="label text" for="notes">Notes</label>
+	<textarea id="notes" class="input" name="notes" placeholder="" style="height:100px"></textarea>
+  </div>
+  <div class="botton-content">
+	<a href="./home.html" class="resetButton button cancelButton">Cancel</a>
+	<div class="submit-reset">
+	  <button type="submit" class="button submitButton" id="submitButton">Submit</button>
+	  <button type="reset" class="resetButton button">Reset</button> 
+	</div>
+  </div>
+
 		</form>
 	</div>
 			
