@@ -86,15 +86,14 @@
           <output class="salary-output" for="salary">50000</output>
       </div>
 
-<script>
-
+        <script>
 			const salary = document.querySelector('#salary');
 			const output = document.querySelector('.salary-output');
 			output.textContent = salary.value;
 			salary.addEventListener('input', function() {
 				output.textContent = salary.value 
 			});  
-</script>
+        </script>
 
 <div class="row-content">
 	<label class="labeltext" for="startDate">Start Date</label>
