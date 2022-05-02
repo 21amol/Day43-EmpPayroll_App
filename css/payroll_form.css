@@ -37,3 +37,69 @@ body {
 .emp-payroll {color: darkslategray; }
 
 * { box-sizing: border-box; }
+
+.form-content {
+    min-height: calc(100% 80%);
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0 solid green;
+}
+
+.form {
+    width: 65%;
+		padding: 44px 60px;
+		border-radius: 8px;
+		opacity: 1;
+		border: 1px solid #f5f5f5;
+		box-shadow: 0px 3px 6px #00000029;
+		background: white 0% 0% no-repeat padding-box;
+}
+
+.form-head {
+	font: normal normal bold 25px/38px Arial;
+	letter-spacing: 0px;
+	color: darkblue;
+	text-transform: capitalize;
+	opacity: 1;
+	padding-bottom: 20px;
+	
+}
+
+.row-content{
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 10px;
+	align-items: center;
+	border: 0px solid green;
+}
+
+.label{
+	min-width: 140px;
+}
+
+label{
+	padding: 12px 12px 12px 0;
+	display: inline-block;
+}
+
+.text{
+	font-size: 16px;
+	color: black;
+	opacity: 1;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.input{
+	width: 100%;
+	padding:12px;
+	border:1px solid gainsboro;
+	border-radius:4px;
+	resize: vertical;
+}
+
+
+
+
+
