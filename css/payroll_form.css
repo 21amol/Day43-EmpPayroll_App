@@ -205,11 +205,11 @@ border: none;
 		margin-bottom: 20px;
 	}
 
-	.submitButton{
+	.submitButton {
 		margin:0;
 	}
 
-	.button-content{
+	.button-content {
 		flex-direction: column-reverse;
 		align-items: flex-start;
 	}
