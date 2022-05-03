@@ -12,9 +12,9 @@ class EmployeePayrollData {
     }
   
     set name(name) {
-      let nameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
+      let nameRegex = RegExp("^[A-Z]{1}[a-z]{1,}$");
       if (nameRegex.test(name)) this._name = name;
-      else throw "Name is Incorrect";
+      else throw "Incorrect Name";
     }
   
     get profilePic() {
@@ -67,7 +67,7 @@ class EmployeePayrollData {
         throw "Future Date. Date is Invalid";
       } else this._startDate =stringifyDate(new Date(startDate).toLocaleDateString());
     }
-    
+
     // method
     toString() {
       const options = { year: "numeric", month: "long", day: "numeric" };
@@ -78,3 +78,28 @@ class EmployeePayrollData {
       );
     }
   }
+
+  
+  window.addEventListener("DOMContentLoaded", (event) => {
+    const name = document.querySelector("#name");
+    const textError = document.querySelector(".text-error");
+    name.addEventListener("input", function () {
+      if (name.value.length == 0) {
+        textError.textContent = " ";
+      } else {
+        try {
+          new EmployeePayrollData().name = name.value;
+          textError.textContent = " ";
+        } catch (e) {
+          textError.textContent = e;
+        }
+      }
+    });
+});
+
+const salary = document.querySelector("#salary");
+const output = document.querySelector(".salary-output");
+output.textContent = salary.value;
+salary.addEventListener("input", function () {
+  output.textContent = salary.value;
+});
