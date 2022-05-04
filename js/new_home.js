@@ -3,15 +3,55 @@ window.addEventListener("DOMContentLoaded", (event) => {
 });
 
 	const createInnerHtml = () => {
-	
-    const innerHtml = 
-		'<th></th><th>Name</th><th>Gender</th><th>Department</th><th>Salary</th><th>Start Date</th><th>Actions</th>'+ 
-		'<tr><td><img class="profile" alt="" src="../assests/profile-images/Ellipse -9.png"></td>'+
-		'<td>Amol</td><td>Male</td><td><div class="Dept-label">HR</div></td><td>50000</td>'+
-		'<td>21 May 2020</td><td><img id="1" onclick="remove(this)" alt="delete" src="../assests/icons/delete-black-18dp.svg">'+
-		'<img id="1" alt="edit" onclick="upgate(this)" src="../assests/icons/create-black-18dp.svg"></td></tr>';
-			
-	document.querySelector('#table-display').innerHTML = innerHtml;
+		const headerHtml = "<th></th><th>Name</th><th>Gender</th><th>Department</th>"+
+		                    "<th>Salary</th><th>Start Date</th><th>Actions</th>"
+	let empPayrollData = createEmployeePayrollJSON()[0];
+	let innerHTML = `${headerHtml}`;
+	let empPayrollList = createEmployeePayrollJSON();
+	for (const empPayrollData of empPayrollList) {
+		innerHTML = `${innerHTML}
+		<tr>
+					<td><img class="profile" src="${empPayrollData._profilePic}" alt=""></td>
+					<td>${empPayrollData._name}</td>
+					<td>${empPayrollData._gender}</td>
+					<td><div class='Dept-label'>${empPayrollData._deptartment}</div></td>
+					<td>${empPayrollData._salary}</td>
+					<td>${empPayrollData._startDate}</td>
+					<td>
+						<img name="${empPayrollData._id}" onclick="remove(this)" alt="delete" src="../assests/icons/delete-black-18dp.svg">
+						<img name="${empPayrollData._id}" alt="edit" onclick="upgate(this)" src="../assests/icons/create-black-18dp.svg">
+					</td> 
+				</tr>`;
+
+	}
+	document.querySelector('#table-display').innerHTML = innerHTML;
 	};
+	
+	const createEmployeePayrollJSON = () => {
+		let empPayrollListLocal = [
+			{
+				_name: 'Amol Ghotale',
+				_gender: 'Male',
+				_deptartment: 'HR',
+				_salary: '50000',
+				_startDate: '26 May 2020',
+				_note: ' ',
+				_id: new Date().getTime(),
+				_profilePic: '../assests/profile-images/Ellipse-9.png'
+			},
+			{
+				_name: 'Priya Jadhav',
+				_gender: 'Female',
+				_deptartment: 'Marketing',
+				_salary: '100000',
+				_startDate: '20 May 2021',
+				_note: ' ',
+				_id: new Date().getTime() + 1,
+				_profilePic: '../assests/profile-images/Ellipse-1.png'
+			}
+		];
+    return empPayrollListLocal;
+		}
+	
 
 						
