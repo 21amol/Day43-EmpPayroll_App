@@ -1,13 +1,22 @@
+let empPayrollList;
 window.addEventListener("DOMContentLoaded", (event) => {
-    createInnerHtml();
+ empPayrollList = getEmployeePayrollDataFromStorage();
+ document.querySelector(".emp-count").textContent = empPayrollList.length;	
+ createInnerHtml();
+ localStorage.removeItem('editEmp');
 });
 
-	const createInnerHtml = () => {
+const getEmployeePayrollDataFromStorage = () => {
+	return localStorage.getItem('EmployeePayrollList') ? JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+}	
+
+const createInnerHtml = () => {
+	if (empPayrollList.length == 0) return;
 		const headerHtml = "<th></th><th>Name</th><th>Gender</th><th>Department</th>"+
 		                    "<th>Salary</th><th>Start Date</th><th>Actions</th>"
 	let empPayrollData = createEmployeePayrollJSON()[0];
 	let innerHTML = `${headerHtml}`;
-	let empPayrollList = createEmployeePayrollJSON();
+//	let empPayrollList = createEmployeePayrollJSON();
 	for (const empPayrollData of empPayrollList) {
 		innerHTML = `${innerHTML}
 		<tr>
@@ -27,31 +36,40 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	document.querySelector('#table-display').innerHTML = innerHTML;
 	};
 	
-	const createEmployeePayrollJSON = () => {
-		let empPayrollListLocal = [
-			{
-				_name: 'Amol Ghotale',
-				_gender: 'Male',
-				_deptartment: 'HR',
-				_salary: '50000',
-				_startDate: '26 May 2020',
-				_note: ' ',
-				_id: new Date().getTime(),
-				_profilePic: '../assests/profile-images/Ellipse-9.png'
-			},
-			{
-				_name: 'Priya Jadhav',
-				_gender: 'Female',
-				_deptartment: 'Marketing',
-				_salary: '100000',
-				_startDate: '20 May 2021',
-				_note: ' ',
-				_id: new Date().getTime() + 1,
-				_profilePic: '../assests/profile-images/Ellipse-1.png'
-			}
-		];
-    return empPayrollListLocal;
-		}
+	// const createEmployeePayrollJSON = () => {
+	// 	let empPayrollListLocal = [
+	// 		{
+	// 			_name: 'Amol Ghotale',
+	// 			_gender: 'Male',
+	// 			_deptartment: 'HR',
+	// 			_salary: '50000',
+	// 			_startDate: '26 May 2020',
+	// 			_note: ' ',
+	// 			_id: new Date().getTime(),
+	// 			_profilePic: '../assests/profile-images/Ellipse-9.png'
+	// 		},
+	// 		{
+	// 			_name: 'Priya Jadhav',
+	// 			_gender: 'Female',
+	// 			_deptartment: 'Marketing',
+	// 			_salary: '100000',
+	// 			_startDate: '20 May 2021',
+	// 			_note: ' ',
+	// 			_id: new Date().getTime() + 1,
+	// 			_profilePic: '../assests/profile-images/Ellipse-1.png'
+	// 		}
+	// 	];
+    // return empPayrollListLocal;
+	// 	}
 	
-
-						
+	const remove = (node) => {
+		let empPayrollData = empPayrollList.find(empData => empData._id == node.id);
+		if(!empPayrollData) return;
+		const index = empPayrollList
+						.map(empData => empData._id)
+						.indexOf(empPayrollData._id);
+		empPayrollList.splice(index, 1);
+		localStorage.setItem("EmployeePayrollList", JSON.stringify(empPayrollList));
+		document.querySelector('.emp-count').textContent = empPayrollList.length;
+		createInnerHtml();
+	}
